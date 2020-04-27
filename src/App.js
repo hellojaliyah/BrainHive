@@ -1,38 +1,46 @@
-import React, { Component } from 'react';
-import './App.css';
-import Resource from './components/Resource'
-import resources from './mock/resources'
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
+import ResourceList from "./components/ResourceList";
+import Navbar from "./components/Navbar";
+import resources from "./mock/resources";
 
-import ResourceForm from './components/ResourceForm'
+import ResourceForm from "./components/ResourceForm";
 
-class App extends Component{
-
-    constructor(props) {
-      super(props);
-      this.renderPosts.bind(this)
-    }
-
-
-  renderPosts = () => {
-    const display = resources.map((resource) => {
-        return <Resource resource={resource} />;
-    })
-
-    return display;
+class App extends Component {
+  //[<Resource resource={aResource}/>, <Resource resource={aResource}]
+  // constructor(props) {
+  //   super(props);
+  //   this.renderPosts.bind(this);
+  // }
+  // Resource = require("./components/Resource");
+  state = {
+    resources: [...resources],
   };
 
-  render(){
+  addResource = (newResource) => {
+    // this.state.resources.push(newResource);
+    this.setState({
+      resources: [...this.state.resources, newResource],
+    });
+  };
+
+  render() {
     return (
-      <div className="App">
-        <div className="header">
-        <h1 className="title"> Welcome to BrainHive</h1>
-        <div className="navigation">
-          <a href="/">Add Resource</a>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <ResourceList resources={this.state.resources} />
+            </Route>
+            <Route path="/addResource">
+              <ResourceForm addResource={this.addResource} />
+            </Route>
+          </Switch>
+          <p>Footer</p>
         </div>
-        </div>
-        <div className='resourceList'>{this.renderPosts()}</div>
-        <ResourceForm />
-      </div>
+      </BrowserRouter>
     );
   }
 }

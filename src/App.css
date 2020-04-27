@@ -40,17 +40,17 @@
 .box {
   border: 1px solid #171717;
   border-bottom-width: 0;
-  border-radius: 20%;
+  border-radius: 20px;
   margin-bottom: 25px;
   padding: 0 8px;
-  width: 88%;
+  width: 80%;
   max-width: 500px;
   box-shadow: 5px 3px 5px #000000;
   background-color: #f7f7f7;
 }
 
 .box:hover {
-  box-shadow: 15px 9px 16px black;
+  box-shadow: 15px 9px 15px black;
 }
 
 .resourceList {
@@ -64,7 +64,7 @@
 .header {
   display: flex;
   flex-direction: row;
-  padding-left: 2rem;
+  padding: 0 2rem;
   margin-bottom: 1.5rem;
   background-color: seagreen;
 }
@@ -72,17 +72,17 @@
 .title {
   display: flex;
   flex: 1;
-  font-size: 3ren;
+  font-size: 3rem;
   font-family: cursive;
   font-weight: bold;
   text-shadow: 1px 8px 16px black;
-  color: darkblue;
+  color: black;
 }
 
 .navigation {
   display: flex;
   padding: 0 16px;
-  margin-right:  8%;
+  margin-right: 8%;
   justify-content: center;
   align-items: center;
 }
